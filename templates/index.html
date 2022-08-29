@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+{% block base_css %}
+{{block.super}}
+{% endblock base_css %}
+{% block indexhtml %}
+    <!-- Start Topbar -->
+    <div class="topbar w-100">
+        <!-- Start row -->
+        <div class="row align-items-center">
+        <!-- Start col -->
+        <div class="col-md-12 align-self-center">
+            <div class="menubar d-inline">
+            <a class="menu-hamburger d-flex align-items-center font-weight-bold"  href="{% url 'tweetapp:home' %}">
+                Home<i class="ri-home-2-fill px-1"></i>
+            </a>
+            </div>
+        </div>
+        <!-- End col -->
+        </div>
+        <!-- End row -->
+    </div>
+    <!-- End Topbar -->
+    {% if messages %}
+    <!-- Start container-fluid  -->
+<div class="container-fluid mt-5 mb-n5">
+  <!-- Start row -->
+  <div class="row pt-4 d-flex justify-content-center">
+    <ul class="messages">
+      {% for message in messages %}
+      <div
+        class="alert alert-{{ message.tags }} alert-dismissible text-dark font-weight-bold"
+        role="alert"
+      >
+        {{ message }}
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+    </ul>
+  </div>
+  <!-- End row -->
+  <!-- Start row -->
+  
+</div>
+<!-- End container-fluid  -->
+{% endif %}
+
+    {% block content %}
+
+
+
+    {% endblock content %}
+
+    <!-- Start Footer -->
+    <div class="d-flex justify-content-center mt-5 pt-5 pt-md-0">
+        <div class="footerbar text-dark pt-5 pt-md-0">
+
+            <a target="_blank" rel="noopener noreferrer" href="https://docs.tweepy.org/en/stable/api.html/">Explore other twitter API Endoint</a> |
+         </div>
+      </div>
+      <!-- End Footer -->
+<script type="text/javascript">
+    let static = "{% static 'colorscheme/css' %}"
+</script>
+{% endblock indexhtml %}

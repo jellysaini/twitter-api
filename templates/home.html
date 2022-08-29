@@ -1,0 +1,76 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %} DashBoard{% endblock title %} 
+
+{% block content %}
+<!-- Start container-fluid  -->
+<div class="container-fluid pb-5 my-5">
+  
+  <!-- Start row -->
+  <div class="row pt-4 justify-content-center">
+   
+    <!-- Start col -->
+    <div class="col my-md-3 col-md-3">
+      <a
+        type="button"
+        class="btn btn-block text-center p-3 bg-secondary font-weight-bold"
+        role="button"
+        href="{% url 'tweetapp:retweets_of_me' %}"
+        data-toggle="tooltip"
+        title="The list of retweeted tweet."
+      >The Retweeted Tweets
+      </a>
+    </div>
+    <!-- End col -->
+     <!-- Start col -->
+     <div class="col my-md-3 col-md-3">
+      <a
+        type="button"
+        class="btn btn-block text-center p-3 bg-secondary font-weight-bold"
+        role="button"
+        href="{% url 'tweetapp:retweeted_user' %}"
+        data-toggle="tooltip"
+        title="The list of users who have retweeted your every tweet."
+      >Retweeted User
+      </a>
+    </div>
+    <!-- End col -->
+  
+    <!-- Start col -->
+    <div class="col my-md-3 col-md-3">
+      <a
+        type="button"
+        class="btn btn-block text-center p-3 bg-secondary font-weight-bold"
+        role="button"
+        href="{% url 'tweetapp:search_user' %}"
+        data-toggle="tooltip"
+        title="The list of retweeted tweet."
+      >Search Tweeter user
+      </a>
+    </div>
+    <!-- End col -->
+
+    <!-- Start col -->
+    <div class="col my-md-3 col-md-3">
+      <a
+        type="button"
+        class="btn btn-block text-center p-3 bg-secondary font-weight-bold"
+        role="button"
+        href="{% url 'tweetapp:search_tweet' %}"
+        data-toggle="tooltip"
+        title="The list of retweeted tweet."
+      >Search Tweet
+      </a>
+    </div>
+    <!-- End col -->
+  
+</div>
+<!-- End row -->
+
+
+
+  
+  </div>
+  <!-- End container-fluid  -->
+
+  {% endblock content %} {% block javascript %} {% endblock javascript %}

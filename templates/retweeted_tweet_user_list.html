@@ -1,0 +1,86 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %} Retweeted Tweet User{% endblock title %} 
+
+{% block content %}
+<!-- Start container-fluid  -->
+<div class="container-fluid pb-5 my-5">
+   <!-- Start row -->
+   <div class="row pt-4 d-flex justify-content-center">
+    <h4>My Retweeted Tweet User List</h4>
+  </div>
+  <!-- End row -->
+  <!-- Start row -->
+  <div class="row pt-4 justify-content-center">
+    {% for t in get_retweets %}
+        <!-- Start col -->  
+        <div class="col-12 p-lg-3 m-lg-2">
+            <!-- Start row -->
+            <div class="row p-2">
+                <!-- Start col -->
+                <div class="col-12 bg-white rounded shadow-sm">
+                <!-- Start row -->
+                <div class="row list-group-item d-flex">
+                    <!-- Start col -->
+                    <div class="col-1">
+                    <img src="{{t.user.profile_image_url_https}}" class="img-fluid img-thumbnail" alt="{{u.user.name}}" srcset="">
+                    </div>
+                    <!-- End col -->
+                    <!-- Start col -->
+                    <div class="col-11">
+                    <!-- Start row -->
+                    <div class="row ">
+
+                        <div class="col font-weight-bold d-flex">Tweet Details
+                        <i data-toggle="tooltip" title="This detail is fetched from Tweeter API." class="ri-error-warning-line ri-xxs align-self-start"></i>
+                        </div>
+                    
+                    </div>
+                    <!-- End row -->
+                    <!-- Start row -->
+                    <div class="row list-group-item d-flex">
+        
+                        <div class="col">ID : {{t.id}}</div>
+                        <div class="col">Text : {{t.text}}</div>
+                        <div class="col">Created At : {{t.created_at}}</div>
+                        
+                    </div>
+                    <!-- End row -->
+
+                    <!-- Start row -->
+                    <div class="row pt-3">
+
+                        <div class="col font-weight-bold d-flex">User Details
+                        <i data-toggle="tooltip" title="This detail is fetched from  Tweeter API." class="ri-error-warning-line ri-xxs align-self-start"></i>
+                        </div>
+                    </div>
+                    <!-- End row -->
+                    <!-- Start row -->
+                    <div class="row list-group-item d-flex">
+                        <div class="col">ID : {{t.user.id}}</div>
+                        <div class="col">Name : {{t.user.name}}</div>
+                        <div class="col">Screen Name : {{t.user.screen_name}}</div>
+                        <div class="col">Created At : {{t.user.created_at}}</div>
+                    </div>
+                    
+                    </div>
+                    <!-- End col -->
+                </div>
+            </div>
+            <!-- End col -->
+            
+        </div>
+        <!-- End row -->
+    </div>
+    <!-- End col -->
+        {% endfor %}
+    </div>
+    <!-- End row -->
+
+
+
+  
+  </div>
+  <!-- End container-fluid  -->
+
+  {% endblock content %} {% block javascript %} {% endblock javascript %}

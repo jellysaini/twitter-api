@@ -1,0 +1,118 @@
+{% extends "index.html" %}
+{% load static %} 
+{% load crispy_forms_tags %} 
+{% block title %}Search User{% endblock title %} 
+
+{% block content %}
+<!-- Start container-fluid  -->
+<div class="container-fluid pb-5 my-5">
+    <!-- Start row -->
+    <div class="row pt-4 d-flex justify-content-center">
+        <h4>Search Tweeter User</h4>
+      </div>
+      <!-- End row -->
+      
+      <!-- Start row -->
+      <div class="row justify-content-center">
+        <!-- Start col -->
+    <div class="col col-md-6">
+      <form class="" action="" method="post">
+          {% csrf_token %} {{form|crispy }}
+  
+          <div class="">
+            <div class="col">
+              <input
+                class="btn btn-block btn-outline-dark"
+                type="submit"
+                value="Search"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- End col -->
+    </div>
+    <!-- End row -->
+    
+    {% if search_users %}
+
+    <!-- Start row -->
+   <div class="row pt-4 d-flex justify-content-center">
+    <h4>Search Result for {{form.query.value}}</h4>
+  </div>
+  <!-- End row -->
+  <!-- Start row -->
+  <div class="row pt-4 justify-content-center">
+    {% for t in search_users %}
+        <!-- Start col -->  
+        <div class="col-12 p-lg-3 m-lg-2">
+            <!-- Start row -->
+            <div class="row p-2">
+                <!-- Start col -->
+                <div class="col-12 bg-white rounded shadow-sm">
+                <!-- Start row -->
+                <div class="row list-group-item d-flex">
+                    <!-- Start col -->
+                    <div class="col-1">
+                    <img src="{{t.profile_image_url_https}}" class="img-fluid img-thumbnail" alt="{{u.name}}" srcset="">
+                    </div>
+                    <!-- End col -->
+                    <!-- Start col -->
+                    <div class="col-11">
+                    <!-- Start row -->
+                    <div class="row ">
+
+                        <div class="col font-weight-bold d-flex">Tweet Details
+                        <i data-toggle="tooltip" title="This detail is fetched from Tweeter API." class="ri-error-warning-line ri-xxs align-self-start"></i>
+                        </div>
+                    
+                    </div>
+                    <!-- End row -->
+                    <!-- Start row -->
+                    <div class="row list-group-item d-flex">
+        
+                        <div class="col">Text : {{t.description}}</div>
+                        
+                    </div>
+                    <!-- End row -->
+
+                    <!-- Start row -->
+                    <div class="row pt-3">
+
+                        <div class="col font-weight-bold d-flex">User Details
+                        <i data-toggle="tooltip" title="This detail is fetched from  Tweeter API." class="ri-error-warning-line ri-xxs align-self-start"></i>
+                        </div>
+                    </div>
+                    <!-- End row -->
+                    <!-- Start row -->
+                    <div class="row list-group-item d-flex">
+                        <div class="col">ID : {{t.id}}</div>
+                        <div class="col">Name : {{t.name}}</div>
+                        <div class="col">Screen Name : {{t.screen_name}}</div>
+                        <div class="col">Location: {{t.location}}</div>
+                        <div class="col">Verified: {{t.verified}}</div>
+                        <div class="col">Following: {{t.following}}</div>
+                        <div class="col">Created At : {{t.created_at}}</div>
+                        <div class="col">Friends : {{t.friends_count}}</div>
+                        <div class="col">Followers Count : {{t.followers_count}}</div>
+                    </div>
+                    
+                    </div>
+                    <!-- End col -->
+                </div>
+            </div>
+            <!-- End col -->
+            
+        </div>
+        <!-- End row -->
+    </div>
+    <!-- End col -->
+        {% endfor %}
+    </div>
+    <!-- End row -->
+    {% endif %}
+
+  </div>
+  <!-- End container-fluid  -->
+
+  {% endblock content %} {% block javascript %} {% endblock javascript %}

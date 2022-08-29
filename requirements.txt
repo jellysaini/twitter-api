@@ -1,0 +1,7 @@
+autopep8==1.6.0
+Django==3.2
+django-crispy-forms==1.14.0
+py-algorand-sdk==1.13.1
+pyteal==0.10.1
+python-decouple==3.6
+tweepy==4.10.0

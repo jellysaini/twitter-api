@@ -1,0 +1,37 @@
+{% extends "index.html" %}
+
+{% load static %}
+{% load tz %}
+{% block title %}Timezone {% endblock title %}
+
+{% block content %}
+<!-- Start container-fluid -->
+<div class="container-fluid pb-5 my-5">
+    <!-- Start row -->
+    <div class="row pt-4 d-flex justify-content-center">
+      <h4>Timezone</h4>
+    </div>
+    <!-- End row -->
+    {% get_current_timezone as TIME_ZONE %}
+    <!-- Start row -->
+    <div class="row pt-5">
+    <!-- Start col -->
+    <div class="col-10 offset-1">
+        <form action="{% url 'zkapp:set_timezone' %}" method="POST">
+            {% csrf_token %}
+            <label for="timezone">Time zone:</label>
+            <select name="timezone">
+                {% for city, tzz in timez.items %}
+                <option value="{{ tzz }}"{% if tzz == TIME_ZONE %} selected{% endif %}>{{ city }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Set">
+        </form>
+    </div>
+    <!-- End col -->
+  </div>
+  <!-- End row -->
+</div>
+<!-- End container-fluid -->
+{% endblock content %}
+{% block javascript %} {% endblock javascript %}
